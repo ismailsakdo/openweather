@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <form>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date"><br>
+
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time"><br>
+
+      <label for="comment">Comment (Malay):</label>
+      <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+
+      <input type="button" value="Submit" onclick="submitForm()">
+    </form>
+
+    <script>
+      function submitForm() {
+        var date = document.getElementById("date").value;
+        var time = document.getElementById("time").value;
+        var comment = document.getElementById("comment").value;
+
+        google.script.run.insertComment(date, time, comment);
+
+        document.getElementById("date").value = "";
+        document.getElementById("time").value = "";
+        document.getElementById("comment").value = "";
+
+        alert("Comment submitted successfully!");
+      }
+    </script>
+  </body>
+</html>
